@@ -729,14 +729,16 @@ VirtualRepeatController.prototype.virtualRepeatUpdate_ = function(items, oldItem
   if (lengthChanged) {
     this.container.setScrollSize(itemsLength * this.itemSize);
   }
-
+  
+  var cleanupFirstRender = false, firstRenderStartIndex;
   if (this.isFirstRender) {
+    cleanupFirstRender = true;
     this.isFirstRender = false;
-    var startIndex = this.$attrs.mdStartIndex ?
+    firstRenderStartIndex = this.$attrs.mdStartIndex ?
       this.$scope.$eval(this.$attrs.mdStartIndex) :
       this.container.topIndex;
-    this.container.scrollToIndex(startIndex);
-  }
+    this.container.scrollToIndex(firstRenderStartIndex);
+  }  
 
   // Detach and pool any blocks that are no longer in the viewport.
   Object.keys(this.blocks).forEach(function(blockIndex) {
@@ -789,6 +791,10 @@ VirtualRepeatController.prototype.virtualRepeatUpdate_ = function(items, oldItem
         this.blocks[maxIndex] && this.blocks[maxIndex].element[0].nextSibling);
   }
 
+  if (cleanupFirstRender) {
+    this.container.scrollToIndex(firstRenderStartIndex);
+  }
+    
   // Restore $$checkUrlChange.
   this.$browser.$$checkUrlChange = this.browserCheckUrlChange;
 
