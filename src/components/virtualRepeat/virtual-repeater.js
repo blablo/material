@@ -356,7 +356,7 @@ VirtualRepeatContainerController.prototype.getScrollOffset = function() {
  */
 VirtualRepeatContainerController.prototype.scrollTo = function(position) {
   this.scroller[this.isHorizontal() ? 'scrollLeft' : 'scrollTop'] = position;
-  this.handleScroll_();
+  //this.handleScroll_();
 };
 
 /**
