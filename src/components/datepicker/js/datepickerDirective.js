@@ -622,9 +622,9 @@
     var elementRect = this.inputContainer.getBoundingClientRect();
     var bodyRect = body.getBoundingClientRect();
 
-    if (!this.topMargin || this.topMargin < 0) {
+    /* if (!this.topMargin || this.topMargin < 0) {
       this.topMargin = (this.inputMask.parent().prop('clientHeight') - this.ngInputElement.prop('clientHeight')) / 2;
-    }
+    } */
 
     // Check to see if the calendar pane would go off the screen. If so, adjust position
     // accordingly to keep it within the viewport.
