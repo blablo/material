@@ -388,7 +388,7 @@
     } else {
       self.$$rAF(function() {
         var scroller = childCtrl.calendarScroller;
-
+	scroller.scrollTop = 0;
         self.scrollbarWidth = scroller.offsetWidth - scroller.clientWidth;
         self.width = element.querySelector('table').offsetWidth;
         setWidth();
